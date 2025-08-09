@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sua Key</title>
+  <style>
+    body { background: #121212; color: white; font-family: Arial, sans-serif; text-align: center; padding: 60px; }
+    #keyBox { margin-top: 40px; font-size: 24px; background: #222; padding: 20px; border-radius: 10px; display: inline-block; user-select: all; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>🔑 Sua Key foi gerada!</h1>
+  <p>Clique na Key para copiar e use no seu script.</p>
+  <div id="keyBox">Carregando...</div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get('code');
+
+    const keyBox = document.getElementById('keyBox');
+    if (key) {
+      keyBox.textContent = key;
+      keyBox.onclick = () => {
+        navigator.clipboard.writeText(key);
+        alert("Key copiada para a área de transferência!");
+      };
+    } else {
+      keyBox.textContent = "Nenhuma Key encontrada.";
+    }
+  </script>
+</body>
+</html>

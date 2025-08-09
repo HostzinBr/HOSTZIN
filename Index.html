@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Obter Key</title>
+  <style>
+    body { background: #121212; color: white; font-family: Arial, sans-serif; text-align: center; padding: 60px; }
+    button { background: #4CAF50; color: white; padding: 15px 25px; border: none; border-radius: 8px; font-size: 18px; cursor: pointer; }
+    button:hover { background: #45a049; }
+  </style>
+</head>
+<body>
+  <h1>🔑 Obtenha sua Key</h1>
+  <p>Clique no botão para gerar sua Key e passar pelo link de verificação.</p>
+  <button id="btn">Obter Key</button>
+
+  <script>
+    document.getElementById('btn').onclick = function() {
+      // Gerar Key aleatória (8 caracteres)
+      let key = Math.random().toString(36).substring(2,10).toUpperCase();
+
+      // URL do seu encurtador + link de destino com key como parâmetro
+      let encurtador = "https://SEU_ENCURTADOR.com/go?final=";
+      let destino = encodeURIComponent("https://SEUSITE.com/key.html?code=" + key);
+
+      // Abrir link no encurtador com o destino que inclui a key
+      window.open(encurtador + destino, "_blank");
+    }
+  </script>
+</body>
+</html>
